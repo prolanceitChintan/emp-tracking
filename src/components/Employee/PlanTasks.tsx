@@ -135,15 +135,15 @@ export const PlanTasks: React.FC<PlanTasksProps> = ({ user }) => {
       </div>
 
       {/* Edit Count Warning */}
-      {editCount >= 1 && <div className="mb-6 p-4 bg-blue-50 rounded-lg border border-blue-200 transition-all duration-300">
+      {editCount >= 1 && <div className="mb-6 p-4 bg-red-50 rounded-lg border border-red-400 transition-all duration-300">
         <div className="flex items-center">
-          <AlertCircle className="h-5 w-5 text-blue-600 mr-2" />
+          <AlertCircle className="h-5 w-5 text-red-600 mr-2" />
           <div>
-            <p className="text-sm font-medium text-blue-800">
+            <p className="text-sm font-medium text-red-600">
               Edit Count: {editCount}/3
             </p>
-            <p className="text-xs text-blue-600">
-              {canEditToday 
+            <p className="text-xs text-red-600">
+              {canEditToday
                 ? `You have ${3 - editCount} edit${3 - editCount !== 1 ? 's' : ''} remaining for today.`
                 : 'You have reached the maximum number of edits for today.'
               }

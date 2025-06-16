@@ -178,14 +178,14 @@ export const EODReport: React.FC<EODReportProps> = ({ user }) => {
       </div>
 
       {/* Edit Count Warning */}
-      {editCount >= 1 && <div className="mb-6 p-4 bg-blue-50 rounded-lg border border-blue-200 transition-all duration-300">
+      {editCount >= 1 && <div className="mb-6 p-4 bg-red-50 rounded-lg border border-red-400 transition-all duration-300">
         <div className="flex items-center">
-          <AlertCircle className="h-5 w-5 text-blue-600 mr-2" />
+          <AlertCircle className="h-5 w-5 text-red-600 mr-2" />
           <div>
-            <p className="text-sm font-medium text-blue-800">
+            <p className="text-sm font-medium text-red-600">
               Edit Count: {editCount}/3
             </p>
-            <p className="text-xs text-blue-600">
+            <p className="text-xs text-red-600">
               {canEditToday
                 ? `You have ${3 - editCount} edit${3 - editCount !== 1 ? 's' : ''} remaining for today.`
                 : 'You have reached the maximum number of edits for today.'
@@ -213,12 +213,13 @@ export const EODReport: React.FC<EODReportProps> = ({ user }) => {
 
       {/* Saved Report Display */}
       {showSavedReport && !isEditing && savedReport && (
+        
         <div className="mb-8 bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden transition-all duration-500 transform scale-100 opacity-100">
-          <div className="p-6 bg-gradient-to-r from-purple-50 to-indigo-50 border-b border-gray-200">
+          <div className="p-6 bg-gradient-to-r from-green-50 to-emerald-50 border-b border-gray-200">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-3">
-                <div className="p-2 bg-purple-100 rounded-lg">
-                  <CheckCircle className="h-5 w-5 text-purple-600" />
+                <div className="p-2 bg-green-100 rounded-lg">
+                  <CheckCircle className="h-5 w-5 text-green-600" />
                 </div>
                 <div>
                   <h2 className="text-lg font-semibold text-gray-900">Today's Report Submitted</h2>
@@ -241,37 +242,35 @@ export const EODReport: React.FC<EODReportProps> = ({ user }) => {
           </div>
           
           <div className="p-6 space-y-6">
-            {/* Completed Tasks Section */}
+            {/* Completed Tasks Section with Working Hours Label */}
             <div>
-              <div className="flex items-center space-x-2 mb-4">
-                <CheckSquare className="h-5 w-5 text-green-600" />
-                <h3 className="text-md font-semibold text-gray-900">Completed Tasks</h3>
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center space-x-2">
+                  <CheckSquare className="h-5 w-5 text-purple-600" />
+                  <h3 className="text-md font-semibold text-gray-900">Completed Tasks</h3>
+                </div>
+                {/* Working Hours Label moved here */}
+                <div className="flex items-center space-x-2 px-3 py-1 bg-blue-100 rounded-full border border-blue-200">
+                  <Clock className="h-4 w-4 text-blue-600" />
+                  <span className="text-sm font-medium text-blue-800">{savedReport.workingHours}h</span>
+                </div>
               </div>
               <div className="space-y-3">
                 {savedReport.completedTasks.map((task, index) => (
                   <div 
                     key={index}
-                    className="flex items-center space-x-3 p-3 bg-green-50 rounded-lg transition-all duration-300 transform hover:scale-102 hover:shadow-sm"
+                    className="flex items-center space-x-3 p-3 bg-purple-50 rounded-lg border border-purple-200 transition-all duration-300 transform hover:scale-102 hover:shadow-sm"
                     style={{ animationDelay: `${index * 100}ms` }}
                   >
                     <div className="flex-shrink-0">
-                      <div className="w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-sm font-medium">
+                      <div className="w-6 h-6 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center text-sm font-medium">
                         ✓
                       </div>
                     </div>
-                    <p className="flex-1 text-gray-900 font-medium">{task}</p>
+                    <p className="flex-1 text-purple-900 font-medium">{task}</p>
                   </div>
                 ))}
               </div>
-            </div>
-
-            {/* Working Hours */}
-            <div className="flex items-center justify-between p-4 bg-blue-50 rounded-lg">
-              <div className="flex items-center space-x-2">
-                <Clock className="h-5 w-5 text-blue-600" />
-                <span className="text-sm font-medium text-blue-800">Working Hours</span>
-              </div>
-              <span className="text-lg font-bold text-blue-900">{savedReport.workingHours}h</span>
             </div>
 
             {/* Challenges */}

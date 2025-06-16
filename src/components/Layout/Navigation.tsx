@@ -6,7 +6,8 @@ import {
   ClipboardList, 
   UserCircle, 
   LogOut,
-  BarChart3
+  BarChart3,
+  History
 } from 'lucide-react';
 import { User } from '../../types';
 
@@ -17,7 +18,7 @@ interface NavigationProps {
   onLogout: () => void;
 }
 
-export const Navigation: React.FC<NavigationProps> = ({
+export const Navigation: React.FC<NavigationProps> = ({ 
   user,
   activeTab,
   onTabChange,
@@ -27,6 +28,7 @@ export const Navigation: React.FC<NavigationProps> = ({
     { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
     { id: 'plan-tasks', label: 'Plan Tasks', icon: ClipboardList },
     { id: 'eod-report', label: 'End of Day Report', icon: FileText },
+    { id: 'reports-history', label: 'My Reports', icon: History },
     { id: 'profile', label: 'Profile', icon: UserCircle },
   ];
 

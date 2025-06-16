@@ -4,6 +4,7 @@ import { Navigation } from './components/Layout/Navigation';
 import { EmployeeDashboard } from './components/Employee/Dashboard';
 import { PlanTasks } from './components/Employee/PlanTasks';
 import { EODReport } from './components/Employee/EODReport';
+import { ReportsHistory } from './components/Employee/ReportsHistory';
 import { AdminDashboard } from './components/Admin/Dashboard';
 import { UserManagement } from './components/Admin/UserManagement';
 import { AllReports } from './components/Admin/AllReports';
@@ -56,6 +57,8 @@ function App() {
           return <PlanTasks user={user} />;
         case 'eod-report':
           return <EODReport user={user} />;
+        case 'reports-history':
+          return <ReportsHistory user={user} />;
         case 'profile':
           return <Profile user={user} onUserUpdate={handleUserUpdate} />;
         default:
